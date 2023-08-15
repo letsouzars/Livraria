@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca safira</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <h1>Cadastro de livros</h1>
+    <input id="nomeLivro" placeholder="Nome" type="text">
+    <input id="autorLivro" placeholder="Autor" type="text">
+    <input id="anoLivro" placeholder="Ano" type="number">
+    <button onclick="adicionar()">Adicionar Livro</button>
+    <button onclick="mostrarLivros()">Mostrar</button>
+    <button onclick="apagar()">Apagar Dados</button>
+    <p id="Mensagem"></p>
+
+
+    <div class="corpo">
+
+        <div class="carrosel">
+            <div class="imgs">
+                <img id="carroselImagem" src="" alt="Imagem do Carrosel">
+            </div>
+            <div class="botao">
+                <button id="anterior">Anterior</button>
+                <button id="proximo">proximo</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        let biblioteca = [];
+
+        function cadastro(nome, autor, ano) {
+            var livro = {
+                titulo: nome,
+                autor: autor,
+                ano: ano
+            };
+            biblioteca.push(livro);
+        }
+
+        function apagar() {
+            biblioteca.length = 0;
+            exibirMensagem();
+        }
+
+        function verificarCamposVazios() {
+            let nome = document.getElementById('nomeLivro').value;
+            let autor = document.getElementById('autorLivro').value;
+            let ano = document.getElementById('anoLivro').value;
+            let mensagem = document.getElementById("Mensagem");
+
+            if (nome === "" || autor === "" || ano === "") {
+                mensagem.textContent = "Cadastre um livro";
+                return false; // Retorna false para indicar que há campos vazios
+            }
+
+            mensagem.textContent = ""; // Limpa a mensagem se todos os campos estiverem preenchidos
+            return true; // Retorna true para indicar que não há campos vazios
+        }
+
+
+        function adicionar() {
+            let nome = document.getElementById('nomeLivro').value;
+            let autor = document.getElementById('autorLivro').value;
+            let ano = document.getElementById('anoLivro').value;
+            cadastro(nome, autor, ano);
+            exibirMensagem();
+        }
+        function adicionar() {
+            
+    let nome = document.getElementById('nomeLivro').value;
+    let autor = document.getElementById('autorLivro').value;
+    let ano = document.getElementById('anoLivro').value;
+    cadastro(nome, autor, ano);
+    exibirMensagem();
+
+    // Atualiza a imagem do carrossel
+    ++imgIndice;
+    carregar();
+}
+
+
+
+
+        function mostrarLivros() {
+            for (let x of biblioteca) {
+                console.log(x.titulo, x.autor, x.ano);
+            }
+            let quantidadeLivros = biblioteca.length;
+            console.log("Total de livros cadastrados: " + quantidadeLivros);
+            exibirMensagem();
+        }
+
+
+
+        function exibirMensagem() {
+            let mensagem = document.getElementById("Mensagem");
+            if (biblioteca.length == 0) {
+                mensagem.textContent = "Cadastre um livro";
+            }
+            else {
+                mensagem.textContent = biblioteca.length + " livros cadastrados";
+            }
+        }
+
+        let imgIndice = 0;
+        const IMAGENS = ['livro1.jpg', 'livro2.jpg', 'livro3.jpg', 'livro4.jpg'];
+        const prevButton = document.getElementById('anterior')
+        const nextButton = document.getElementById('proximo')
+
+        var IMG = document.getElementById('carroselImagem');
+        function carregar() {
+            if (imgIndice < 0) {
+                imgIndice = IMAGENS.length - 1;
+            } else if (imgIndice >= IMAGENS.length) {
+                imgIndice = 0;
+            }
+            IMG.src = IMAGENS[imgIndice];
+        }
+
+        prevButton.addEventListener('click', () => {
+            --imgIndice;
+            carregar();
+        });
+
+        nextButton.addEventListener('click', () => {
+            ++imgIndice;
+            carregar();
+        });
+
+        carregar();
+
+
+    </script>
+</body>
+
+</html>
