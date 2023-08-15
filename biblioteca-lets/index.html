@@ -10,13 +10,24 @@
 </head>
 
 <body>
-    <h1>Cadastro de livros</h1>
+    <header id="header" >
+        <nav class="menu container " >
+            <img src="karina vilela - Floral designer-.png" alt="" class="logo">
+            <a href="#header" class="item">Home</a>
+            <a href="#nossaComida" class="item">Promoções</a>
+            <a href="#nossaEquipe" class="item">Nossa equipe</a>
+            <a href="#cardapio" class="item">Cadastro</a>
+            <a href="#contato" class="item">Contato</a>
+        </nav>
+    </header>
+    <div class="botoes">
     <input id="nomeLivro" placeholder="Nome" type="text">
     <input id="autorLivro" placeholder="Autor" type="text">
     <input id="anoLivro" placeholder="Ano" type="number">
     <button onclick="adicionar()">Adicionar Livro</button>
     <button onclick="mostrarLivros()">Mostrar</button>
     <button onclick="apagar()">Apagar Dados</button>
+    </div>
     <p id="Mensagem"></p>
 
 
@@ -62,11 +73,10 @@
 
             if (nome === "" || autor === "" || ano === "") {
                 mensagem.textContent = "Cadastre um livro";
-                return false; // Retorna false para indicar que há campos vazios
+                return false;
             }
 
-            mensagem.textContent = ""; // Limpa a mensagem se todos os campos estiverem preenchidos
-            return true; // Retorna true para indicar que não há campos vazios
+            mensagem.textContent = ""; 
         }
 
 
@@ -85,7 +95,7 @@
     cadastro(nome, autor, ano);
     exibirMensagem();
 
-    // Atualiza a imagem do carrossel
+  
     ++imgIndice;
     carregar();
 }
