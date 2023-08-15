@@ -10,8 +10,9 @@
 </head>
 
 <body>
-    <header id="header" >
-        <nav class="menu container " >
+
+    <div class="header">
+        <nav class="menu container ">
             <img src="karina vilela - Floral designer-.png" alt="" class="logo">
             <a href="#header" class="item">Home</a>
             <a href="#nossaComida" class="item">Promoções</a>
@@ -19,14 +20,18 @@
             <a href="#cardapio" class="item">Cadastro</a>
             <a href="#contato" class="item">Contato</a>
         </nav>
-    </header>
+
+    </div>
+
+
+
     <div class="botoes">
-    <input id="nomeLivro" placeholder="Nome" type="text">
-    <input id="autorLivro" placeholder="Autor" type="text">
-    <input id="anoLivro" placeholder="Ano" type="number">
-    <button onclick="adicionar()">Adicionar Livro</button>
-    <button onclick="mostrarLivros()">Mostrar</button>
-    <button onclick="apagar()">Apagar Dados</button>
+        <input id="nomeLivro" placeholder="Nome" type="text">
+        <input id="autorLivro" placeholder="Autor" type="text">
+        <input id="anoLivro" placeholder="Ano" type="number">
+        <button onclick="adicionar()">Adicionar Livro</button>
+        <button onclick="mostrarLivros()">Mostrar</button>
+        <button onclick="apagar()">Apagar Dados</button>
     </div>
     <p id="Mensagem"></p>
 
@@ -60,7 +65,7 @@
             biblioteca.push(livro);
         }
 
-        
+
 
         function apagar() {
             biblioteca.length = 0;
@@ -78,7 +83,7 @@
                 return false;
             }
 
-            mensagem.textContent = ""; 
+            mensagem.textContent = "";
         }
 
 
@@ -90,17 +95,17 @@
             exibirMensagem();
         }
         function adicionar() {
-            
-    let nome = document.getElementById('nomeLivro').value;
-    let autor = document.getElementById('autorLivro').value;
-    let ano = document.getElementById('anoLivro').value;
-    cadastro(nome, autor, ano);
-    exibirMensagem();
 
-  
-    ++imgIndice;
-    carregar();
-}
+            let nome = document.getElementById('nomeLivro').value;
+            let autor = document.getElementById('autorLivro').value;
+            let ano = document.getElementById('anoLivro').value;
+            cadastro(nome, autor, ano);
+            exibirMensagem();
+
+
+            ++imgIndice;
+            carregar();
+        }
 
 
 
